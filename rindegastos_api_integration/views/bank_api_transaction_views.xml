@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_bank_api_transaction_tree" model="ir.ui.view">
+        <field name="name">bank.api.transaction.tree</field>
+        <field name="model">bank.api.transaction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <header>
+                    <button name="%(action_bank_api_transaction_wizard)d" string="Importar Movimientos" type="action" class="oe_highlight"/>
+                </header>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="description"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_bank_api_transaction_form" model="ir.ui.view">
+        <field name="name">bank.api.transaction.form</field>
+        <field name="model">bank.api.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Movimiento Rindegastos">
+                <group>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="description"/>
+                    <field name="partner_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bank_api_transaction" model="ir.actions.act_window">
+        <field name="name">Importación Rindegastos</field>
+        <field name="res_model">bank.api.transaction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_bank_api_transaction" name="Importación Rindegastos" action="action_bank_api_transaction" parent="account.menu_finance_entries"/>
+</odoo>

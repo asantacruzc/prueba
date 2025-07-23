@@ -1,0 +1,11 @@
+<odoo>
+    <record id="cron_fetch_bank_transactions" model="ir.cron">
+        <field name="name">Obtener Movimientos de Rindegastos</field>
+        <field name="model_id" ref="model_bank_api_transaction"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_fetch_transactions()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>
