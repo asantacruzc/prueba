@@ -1,42 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_bank_api_transaction_tree" model="ir.ui.view">
+    <record id="bank_api_transaction_tree" model="ir.ui.view">
         <field name="name">bank.api.transaction.tree</field>
         <field name="model">bank.api.transaction</field>
         <field name="arch" type="xml">
             <tree>
                 <header>
-                    <button name="%(action_bank_api_transaction_wizard)d" string="Importar Movimientos" type="action" class="oe_highlight"/>
+                    <button name="%(rindegastos_api_integration.action_bank_api_transaction_wizard)d" string="Importar Movimientos" type="action" class="oe_highlight"/>
                 </header>
-                <field name="name"/>
                 <field name="date"/>
+                <field name="name"/>
+                <field name="employee_name"/>
+                <field name="report_id"/>
                 <field name="amount"/>
                 <field name="description"/>
-                <field name="partner_id"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_bank_api_transaction_form" model="ir.ui.view">
+    <record id="bank_api_transaction_form" model="ir.ui.view">
         <field name="name">bank.api.transaction.form</field>
         <field name="model">bank.api.transaction</field>
         <field name="arch" type="xml">
-            <form string="Movimiento Rindegastos">
-                <group>
-                    <field name="name"/>
-                    <field name="date"/>
-                    <field name="amount"/>
-                    <field name="description"/>
-                    <field name="partner_id"/>
-                </group>
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="employee_name" readonly="1"/>
+                        <field name="report_id" readonly="1"/>
+                        <field name="file_url" widget="url" readonly="1" invisible="1"/>
+                        <field name="date" readonly="1"/>
+                        <field name="amount" readonly="1"/>
+                        <field name="description" readonly="1"/>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="journal_id" invisible="1"/>
+                        <field name="move_id" invisible="1"/>
+                        <field name="state" invisible="1"/>
+                        <field name="file_preview"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
 
     <record id="action_bank_api_transaction" model="ir.actions.act_window">
-        <field name="name">Importación Rindegastos</field>
+        <field name="name">Movimientos Rindegastos</field>
         <field name="res_model">bank.api.transaction</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_bank_api_transaction" name="Importación Rindegastos" action="action_bank_api_transaction" parent="account.menu_finance_entries"/>
+    <menuitem
+        id="menu_bank_api_transaction"
+        name="Movimientos Rindegastos"
+        parent="account.menu_finance_reports"
+        action="action_bank_api_transaction"
+        sequence="10"/>
 </odoo>

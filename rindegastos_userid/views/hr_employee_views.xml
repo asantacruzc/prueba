@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_inherit_rindegastos" model="ir.ui.view">
+        <field name="name">hr.employee.inherit.rindegastos</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar en la sección de información personal, después de work_email -->
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="rindegastos_userid" readonly="1"/>
+                <button name="action_import_rindegastos_userid" type="object" string="Importar User ID de Rindegastos" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

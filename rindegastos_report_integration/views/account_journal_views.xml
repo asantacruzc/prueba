@@ -10,7 +10,7 @@
                 <field name="employee_id" modifiers='{"invisible": [["bank_feed_type", "!=", "rindegastos"]], "required": [["bank_feed_type", "=", "rindegastos"]]}'/>
             </xpath>
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button name="action_open_rindegastos_wizard" type="object" string="Importar Movimientos de Rindegastos" class="oe_stat_button" icon="fa-download" modifiers='{"invisible": [["bank_feed_type", "!=", "rindegastos"]]}'/>
+                <button name="action_open_rindegastos_report_wizard" type="object" string="Importar Reportes de Rindegastos" class="oe_stat_button" icon="fa-download" modifiers='{"invisible": [["bank_feed_type", "!=", "rindegastos"]]}'/>
             </xpath>
         </field>
     </record>

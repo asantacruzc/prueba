@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bank_api_report_tree" model="ir.ui.view">
+        <field name="name">bank.api.report.tree</field>
+        <field name="model">bank.api.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <header>
+                    <button name="%(rindegastos_report_integration.action_bank_api_report_wizard)d" string="Importar Reportes" type="action" class="oe_highlight"/>
+                </header>
+                <field name="name"/>
+                <field name="employee_name"/>
+                <field name="report_number"/>
+                <field name="title"/>
+                <field name="file_url" widget="url"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="report_total_approved"/>
+                <field name="total_difference"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="bank_api_report_form" model="ir.ui.view">
+        <field name="name">bank.api.report.form</field>
+        <field name="model">bank.api.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="employee_name" readonly="1"/>
+                        <field name="report_number" readonly="1"/>
+                        <field name="title" readonly="1"/>
+                        <field name="file_url" widget="url" readonly="1"/>
+                        <field name="file_preview"/>
+                        <field name="date" readonly="1"/>
+                        <field name="amount" readonly="1"/>
+                        <field name="report_total_approved" readonly="1"/>
+                        <field name="total_difference" readonly="1"/>
+                        <field name="note" readonly="1"/>
+                        <field name="policy_name" readonly="1"/>
+                        <field name="journal_id" invisible="1"/>
+                        <field name="move_id" invisible="1"/>
+                        <field name="state" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bank_api_report" model="ir.actions.act_window">
+        <field name="name">Reportes Rindegastos</field>
+        <field name="res_model">bank.api.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_bank_api_report"
+        name="Reportes Rindegastos"
+        parent="account.menu_finance_reports"
+        action="action_bank_api_report"
+        sequence="11"/>
+</odoo>

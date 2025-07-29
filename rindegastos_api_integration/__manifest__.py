@@ -2,8 +2,9 @@
     'name': 'Rindegastos API Integration',
     'version': '1.1',
     'summary': 'Módulo para integrar movimientos de Rindegastos API a un diario contable',
-    'author': 'Maatyer',
-    'depends': ['account'],
+    'category': 'Account',
+	'author': 'Maatyer',
+    'depends': ['account', 'rindegastos_userid','account_accountant'],  # Agrega dependencia
     'data': [
         'security/ir.model.access.csv',
         'views/bank_api_transaction_wizard_views.xml',
