@@ -1,4 +1,5 @@
 # odoolsl
+Version 1.2
 	cosas por editar en modulo
 	Listo	- sacar en el formulario de account_journal nombre superior
 	Listo	- cambiar boton en buscar user id a parte superiror para que no hallan problemas de compativilidad
