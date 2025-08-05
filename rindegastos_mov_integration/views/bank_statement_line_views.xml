@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bank_statement_line_form_inherit_rindegastos" model="ir.ui.view">
+            <field name="name">account.bank.statement.line.form.inherit.rindegastos</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account_accountant.view_bank_statement_line_form_bank_rec_widget"/>
+            <field name="arch" type="xml">
+                <!-- Botón en header, visible si journal.bank_statements_source == 'rindegastos' -->
+                <xpath expr="//form" position="inside">
+                    <header>
+                        <button name="action_import_rindegastos" type="object" string="Importar de Rindegastos" invisible="journal_id.bank_statements_source != 'rindegastos'"/>
+                    </header>
+                </xpath>
+
+                <!-- Grupo para datos de Rindegastos -->
+                <xpath expr="//form//group" position="after">
+                    <group name="rindegastos" colspan="4" col="1" invisible="not rindegastos_file_url">
+                        <separator string="Datos de Rindegastos"/>
+                        <field name="rindegastos_file_url" nolabel="1" readonly="1" widget="url"/>
+                        <field name="rindegastos_file_preview" nolabel="1" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

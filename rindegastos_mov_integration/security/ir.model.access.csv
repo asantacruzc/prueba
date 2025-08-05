@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rindegastos_report,access_rindegastos_report,model_rindegastos_report,base.group_user,1,1,1,1
+access_rindegastos_expense,access_rindegastos_expense,model_rindegastos_expense,base.group_user,1,1,1,1
+access_rindegastos_mov_wizard,access_rindegastos_mov_wizard,model_rindegastos_mov_wizard,base.group_user,1,1,1,1

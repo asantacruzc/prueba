@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="rindegastos_report_tree" model="ir.ui.view">
+            <field name="name">rindegastos.report.tree</field>
+            <field name="model">rindegastos.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="action_open_rindegastos_mov_wizard" type="object" string="Importar Reports y Expenses" class="oe_highlight"/>
+                    </header>
+                    <field name="name"/>
+                    <field name="employee_name"/>
+                    <field name="report_number"/>
+                    <field name="title"/>
+                    <field name="file_url" widget="url"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="report_total_approved"/>
+                    <field name="total_difference"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rindegastos_report_form" model="ir.ui.view">
+            <field name="name">rindegastos.report.form</field>
+            <field name="model">rindegastos.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="employee_name" readonly="1"/>
+                            <field name="report_number" readonly="1"/>
+                            <field name="title" readonly="1"/>
+                            <field name="file_url" widget="url" readonly="1"/>
+                            <field name="file_preview"/>
+                            <field name="date" readonly="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="report_total_approved" readonly="1"/>
+                            <field name="total_difference" readonly="1"/>
+                            <field name="note" readonly="1"/>
+                            <field name="policy_name" readonly="1"/>
+                            <field name="journal_id" invisible="1"/>
+                            <field name="move_id" invisible="1"/>
+                            <field name="state" invisible="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Expenses Relacionados">
+                                <field name="expense_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="date"/>
+                                        <field name="amount"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_rindegastos_report" model="ir.actions.act_window">
+            <field name="name">Reportes Rindegastos</field>
+            <field name="res_model">rindegastos.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_rindegastos_report" name="Reportes Rindegastos" parent="account.menu_finance_reports" action="action_rindegastos_report" sequence="11"/>
+    </data>
+</odoo>

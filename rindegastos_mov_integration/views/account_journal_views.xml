@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_journal_inherit_rindegastos" model="ir.ui.view">
+            <field name="name">account.journal.inherit.rindegastos</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <!-- 
+Agregar campo employee_id después de bank_statements_source 
+                <xpath expr="//field[@name='bank_statements_source']" position="after">
+                    <field name="employee_id" modifiers='{"invisible": [["bank_statements_source", "!=", "rindegastos"]], "required": [["bank_statements_source", "=", "rindegastos"]]}'/>
+                </xpath>
+-->
+
+                <!-- Grupo en página bank_account, visible si bank_statements_source == 'rindegastos' -->
+                <page name="bank_account" position="inside">
+                    <group name="rindegastos_config" string="Sincronización con Rindegastos" invisible="bank_statements_source != 'rindegastos'">
+                        <label for="employee_id" string="Contacto Asociado" required="bank_statements_source == 'rindegastos'"/>
+                        <field name="employee_id" nolabel="1" required="bank_statements_source == 'rindegastos'"/>
+                    </group>
+                </page>
+
+                <!-- Botón en header, visible si bank_statements_source == 'rindegastos' -->
+                <xpath expr="/form/sheet" position="before">
+                    <header>
+                        <button type="object" name="action_open_rindegastos_mov_wizard"
+                                invisible="bank_statements_source != 'rindegastos'"
+                                string="Importar de Rindegastos"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Herencia para el dashboard kanban (resumen del diario) -->
+        <record id="account_journal_dashboard_kanban_inherit_rindegastos" model="ir.ui.view">
+            <field name="name">account.journal.dashboard.kanban.rindegastos.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='bank_journal_cta']" position="inside">
+                    <field name="bank_statements_source" invisible="1"/>
+                    <div id="dashboard_import_rindegastos" class="col overflow-hidden text-start" invisible="bank_statements_source != 'rindegastos'">
+                        <a type="object" name="action_open_rindegastos_mov_wizard" title="Importar Reports y Expenses de Rindegastos">Importar de Rindegastos</a>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

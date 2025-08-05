@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="rindegastos_expense_tree" model="ir.ui.view">
+            <field name="name">rindegastos.expense.tree</field>
+            <field name="model">rindegastos.expense</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="action_open_rindegastos_mov_wizard" type="object" string="Importar Reports y Expenses" class="oe_highlight"/>
+                    </header>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="employee_name"/>
+                    <field name="report_id"/>
+                    <field name="amount"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rindegastos_expense_form" model="ir.ui.view">
+            <field name="name">rindegastos.expense.form</field>
+            <field name="model">rindegastos.expense</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="employee_name" readonly="1"/>
+                            <field name="report_id" readonly="1"/>
+                            <field name="file_url" widget="url" readonly="1"/>
+                            <field name="file_preview"/>
+                            <field name="date" readonly="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="description" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="journal_id" invisible="1"/>
+                            <field name="move_id" invisible="1"/>
+                            <field name="state" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_rindegastos_expense" model="ir.actions.act_window">
+            <field name="name">Expenses Rindegastos</field>
+            <field name="res_model">rindegastos.expense</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_rindegastos_expense" name="Expenses Rindegastos" parent="account.menu_finance_reports" action="action_rindegastos_expense" sequence="10"/>
+    </data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="rindegastos_mov_wizard_form" model="ir.ui.view">
+            <field name="name">rindegastos.mov.wizard.form</field>
+            <field name="model">rindegastos.mov.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="since"/>
+                        <field name="until"/>
+                        <field name="journal_id" invisible="context.get('hide_journal', False)"/>  # Oculto si hide_journal = True
+                    </group>
+                    <footer>
+                        <button name="action_import_mov" string="Importar Reports y Expenses" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_rindegastos_mov_wizard" model="ir.actions.act_window">
+            <field name="name">Importar Reports y Expenses de Rindegastos</field>
+            <field name="res_model">rindegastos.mov.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
